@@ -27,8 +27,16 @@ const anonymousSignIn = (): Promise<any> => {
   return firebase.auth().signInAnonymously();
 };
 
+/**
+ * This function does not catch any errors
+ */
+const signOut = (): Promise<any> => {
+  return firebase.auth().signOut();
+};
+
 export default {
   getUser,
   googleSignIn,
-  anonymousSignIn
+  anonymousSignIn,
+  signOut
 };

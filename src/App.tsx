@@ -8,12 +8,6 @@ import Initialize from './helpers/Initialize';
 const App: React.FC = () => {
   Initialize.initialize();
 
-  // todo: see here if logged in or not
-  // to see which component to send
-
-  // useEffect, await for user,
-  // if user, set state to logged in
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -24,12 +18,8 @@ const App: React.FC = () => {
 
   const chechkLogin = async (): Promise<void> => {
     const user = await Auth.getUser();
-
-    if (user) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
+    const isUser: boolean = user !== null;
+    setIsLoggedIn(isUser);
   };
 
   return <>{isLoggedIn ? <Hello /> : <SignIn />}</>;

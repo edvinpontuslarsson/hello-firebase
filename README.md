@@ -4,6 +4,18 @@
 
 https://hello-firebase-edvin.firebaseapp.com/
 
+## Firebase Instructions
+
+### `firebase serve`
+
+Runs firebase dev server, you might need to preface command with sudo.
+
+### `firebase deploy`
+
+Deploys to public firebase hosting.
+
+## Default React Docs
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

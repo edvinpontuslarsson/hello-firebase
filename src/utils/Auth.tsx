@@ -1,18 +1,19 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
-/*
-class Auth {
-  // username: string = '';
 
-  
-}
-*/
-
-const githubSignIn = (): Promise<any> => {
-  const provider: firebase.auth.GithubAuthProvider = new firebase.auth.GithubAuthProvider();
+const googleSignIn = (): Promise<any> => {
+  const provider: firebase.auth.GoogleAuthProvider = new firebase.auth.GoogleAuthProvider();
   return firebase.auth().signInWithPopup(provider);
 };
 
+const isSignedIn = (): Promise<firebase.User | null> => {
+  return new Promise((resolve) => {
+    firebase.auth().onAuthStateChanged((user) => {
+      resolve(user);
+    });
+  });
+};
+
 export default {
-  githubSignIn
+  googleSignIn
 };

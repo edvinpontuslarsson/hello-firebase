@@ -1,7 +1,11 @@
 import React from 'react';
 
 const Hello: React.FC = () => {
-  return <></>;
+  return (
+    <>
+      <h1>Hello you are logged in!</h1>
+    </>
+  );
 };
 
 export default Hello;

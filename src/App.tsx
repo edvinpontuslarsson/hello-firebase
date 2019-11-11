@@ -3,6 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 
 const App: React.FC = () => {
+  // todo: see here if logged in or not
+  // to see which component to send
+
   return (
     <div className="App">
       <header className="App-header">

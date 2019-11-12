@@ -1,4 +1,6 @@
 import React, { FunctionComponent } from 'react';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 
 type SignInProps = {
   signInWithGoogle: any;
@@ -15,7 +17,15 @@ const SignIn: FunctionComponent<SignInProps> = ({
         </button>
       </p>
 
-      <button>Sign out</button>
+      <p>
+        <button
+          onClick={() => {
+            firebase.auth().signInAnonymously();
+          }}
+        >
+          Sign in anonymously
+        </button>
+      </p>
     </>
   );
 };

@@ -14,12 +14,14 @@ const App: React.FC = (props: any) => {
   return (
     <>
       {user ? (
-        <div>
+        <main>
           <AppBar signOut={signOut} />
           <Hello />
-        </div>
+        </main>
       ) : (
-        <SignIn signInWithGoogle={signInWithGoogle} />
+        <main>
+          <SignIn signInWithGoogle={signInWithGoogle} />
+        </main>
       )}
     </>
   );

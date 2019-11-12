@@ -1,14 +1,13 @@
 import React from 'react';
 import './App.css';
-import firebase from 'firebase/app';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 import withFirebaseAuth from 'react-with-firebase-auth';
 import SignIn from './components/SignIn';
 import Hello from './components/Hello';
 import Initialize from './helpers/Initialize';
 
 const App: React.FC = (props: any) => {
-  Initialize.initialize();
-
   //TODO: add more sign in options
   const { user, signOut, signInWithGoogle } = props;
 
@@ -25,8 +24,13 @@ const App: React.FC = (props: any) => {
   );
 };
 
+Initialize.initialize();
+
 const firebaseAppAuth = firebase.auth();
 
+/**
+ * providers for signing in
+ */
 const providers = {
   googleProvider: new firebase.auth.GoogleAuthProvider()
 };

@@ -11,13 +11,13 @@ const SignIn: FunctionComponent<SignInProps> = ({
 }) => {
   return (
     <>
-      <p>
+      <p style={{ textAlign: 'center' }}>
         <button onClick={signInWithGoogle}>
           Sign in with Google
         </button>
       </p>
 
-      <p>
+      <p style={{ textAlign: 'center' }}>
         <button
           onClick={() => {
             firebase.auth().signInAnonymously();

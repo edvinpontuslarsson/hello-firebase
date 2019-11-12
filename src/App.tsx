@@ -4,7 +4,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import withFirebaseAuth from 'react-with-firebase-auth';
 import SignIn from './components/SignIn';
-import Hello from './components/Hello';
+import Reverse from './components/Reverse';
 import AppBar from './components/AppBar';
 import Initialize from './helpers/Initialize';
 
@@ -14,12 +14,14 @@ const App: React.FC = (props: any) => {
   return (
     <>
       {user ? (
-        <div>
+        <main>
           <AppBar signOut={signOut} />
-          <Hello />
-        </div>
+          <Reverse />
+        </main>
       ) : (
-        <SignIn signInWithGoogle={signInWithGoogle} />
+        <main>
+          <SignIn signInWithGoogle={signInWithGoogle} />
+        </main>
       )}
     </>
   );

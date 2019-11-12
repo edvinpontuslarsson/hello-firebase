@@ -1,14 +1,16 @@
 import React, { FunctionComponent } from 'react';
-import Form from './form/Form';
+import AppForm from './form/AppForm';
 
 const Reverse: FunctionComponent = () => {
   return (
     <>
-      <Form
-        onSubmit={() => {
-          console.log('test');
-        }}
-      />
+      <div style={{ textAlign: 'center' }}>
+        <AppForm
+          onSubmit={({ text }) => {
+            console.log(text);
+          }}
+        />
+      </div>
     </>
   );
 };

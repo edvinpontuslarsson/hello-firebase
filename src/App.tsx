@@ -1,26 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import withFirebaseAuth from 'react-with-firebase-auth';
+import SignIn from './components/SignIn';
+import Hello from './components/Hello';
+import AppBar from './components/AppBar';
+import Initialize from './helpers/Initialize';
 
-const App: React.FC = () => {
+const App: React.FC = (props: any) => {
+  const { user, signOut, signInWithGoogle } = props;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {user ? (
+        <div>
+          <AppBar signOut={signOut} />
+          <Hello />
+        </div>
+      ) : (
+        <SignIn signInWithGoogle={signInWithGoogle} />
+      )}
+    </>
   );
 };
 
-export default App;
+Initialize.initialize();
+
+const firebaseAppAuth = firebase.auth();
+
+/**
+ * providers for signing in
+ */
+const providers = {
+  googleProvider: new firebase.auth.GoogleAuthProvider()
+};
+
+export default withFirebaseAuth({
+  providers,
+  firebaseAppAuth
+})(App);

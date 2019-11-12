@@ -1,10 +1,14 @@
 import React, { FunctionComponent } from 'react';
+import Form from './form/Form';
 
 const Reverse: FunctionComponent = () => {
   return (
     <>
-      <p>Test</p>
-      <input type="text" />
+      <Form
+        onSubmit={() => {
+          console.log('test');
+        }}
+      />
     </>
   );
 };

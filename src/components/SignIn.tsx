@@ -1,5 +1,4 @@
 import React from 'react';
-import Auth from '../helpers/Auth';
 
 const SignIn: React.FC = () => {
   return (

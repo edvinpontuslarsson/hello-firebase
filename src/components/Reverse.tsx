@@ -5,7 +5,7 @@ const Reverse: FunctionComponent = () => {
   return (
     <>
       <div
-        style={{ textAlign: 'center', marginTop: '20px' }}
+        style={{ textAlign: 'center', marginTop: '33px' }}
       >
         <AppForm
           onSubmit={({ text }) => {

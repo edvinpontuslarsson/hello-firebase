@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import AppForm from './form/AppForm';
+import firebase from 'firebase/app';
+import 'firebase/database';
 
 type ReverseProps = {
   user: any;
@@ -15,7 +17,10 @@ const Reverse: FunctionComponent<ReverseProps> = ({
       >
         <AppForm
           onSubmit={({ text }) => {
-            console.log(text);
+            firebase
+              .database()
+              .ref(`text/${user.displayName}`)
+              .push(text);
           }}
         />
       </div>

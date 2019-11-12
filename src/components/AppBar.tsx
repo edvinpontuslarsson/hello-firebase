@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { Button } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
 
 type AppBarProps = {
+  user: any;
   signOut: any;
 };
 

@@ -1,7 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import AppForm from './form/AppForm';
 
-const Reverse: FunctionComponent = () => {
+type ReverseProps = {
+  user: any;
+};
+
+const Reverse: FunctionComponent<ReverseProps> = () => {
   return (
     <>
       <div

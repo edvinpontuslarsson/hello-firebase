@@ -5,7 +5,9 @@ type ReverseProps = {
   user: any;
 };
 
-const Reverse: FunctionComponent<ReverseProps> = () => {
+const Reverse: FunctionComponent<ReverseProps> = ({
+  user
+}) => {
   return (
     <>
       <div

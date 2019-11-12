@@ -7,8 +7,10 @@ type AppBarProps = {
 };
 
 const AppBar: FunctionComponent<AppBarProps> = ({
+  user,
   signOut
 }) => {
+  console.log(user);
   return (
     <div
       style={{
@@ -18,7 +20,8 @@ const AppBar: FunctionComponent<AppBarProps> = ({
       }}
     >
       <Button disableRipple={true} disabled={true}>
-        Welcome user
+        Welcome{' '}
+        {user.isAnonymous ? 'Anonymous' : user.displayName}
       </Button>
       <Button onClick={signOut}>Sign out</Button>
     </div>

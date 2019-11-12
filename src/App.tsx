@@ -9,12 +9,20 @@ import Initialize from './helpers/Initialize';
 const App: React.FC = (props: any) => {
   Initialize.initialize();
 
-  TODO: add more sign in options
+  //TODO: add more sign in options
   const { user, signOut, signInWithGoogle } = props;
 
-  TODO: have app bar here, w sign out if in
+  // TODO: have app bar here, w sign out if in
   // send in sign in stuff as props to Sign in
-  return <>{user ? <Hello /> : <SignIn />}</>;
+  return (
+    <>
+      {user ? (
+        <Hello />
+      ) : (
+        <SignIn signInWithGoogle={signInWithGoogle} />
+      )}
+    </>
+  );
 };
 
 const firebaseAppAuth = firebase.auth();

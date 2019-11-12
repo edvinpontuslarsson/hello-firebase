@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 
-const SignIn: React.FC = () => {
+type SignInProps = {
+  signInWithGoogle: any;
+};
+
+const SignIn: FunctionComponent<SignInProps> = ({
+  signInWithGoogle
+}) => {
   return (
     <>
       <p>
-        <button>Sign in</button>
+        <button onClick={signInWithGoogle}>
+          Sign in with Google
+        </button>
       </p>
 
       <button>Sign out</button>

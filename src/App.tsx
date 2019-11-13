@@ -8,7 +8,6 @@ import Initialize from './helpers/Initialize';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import Typography from '@material-ui/core/Typography';
 
 const App: React.FC = () => {
   const [user, loading] = useAuthState(firebase.auth());

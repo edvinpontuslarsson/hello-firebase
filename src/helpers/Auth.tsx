@@ -1,7 +1,7 @@
 import firebase, { User } from 'firebase/app';
 import 'firebase/auth';
 
-const getUser = (): Promise<firebase.User | null> => {
+export const getUser = (): Promise<firebase.User | null> => {
   return new Promise((resolve) => {
     firebase.auth().onAuthStateChanged((user) => {
       resolve(user);
@@ -9,22 +9,15 @@ const getUser = (): Promise<firebase.User | null> => {
   });
 };
 
-const googleSignIn = (): Promise<firebase.User> => {
+export const googleSignIn = (): Promise<firebase.User> => {
   const provider = new firebase.auth.GoogleAuthProvider();
   return firebase.auth().signInWithPopup(provider);
 };
 
-const anonymousSignIn = (): Promise<User> => {
+export const anonymousSignIn = (): Promise<User> => {
   return firebase.auth().signInAnonymously();
 };
 
-const signOut = (): Promise<void> => {
+export const signOut = (): Promise<void> => {
   return firebase.auth().signOut();
-};
-
-export default {
-  getUser,
-  googleSignIn,
-  anonymousSignIn,
-  signOut
 };

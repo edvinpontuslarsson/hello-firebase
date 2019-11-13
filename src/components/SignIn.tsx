@@ -1,16 +1,10 @@
 import React, { FunctionComponent } from 'react';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/auth';
 import { Button } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
-type SignInProps = {
-  signInWithGoogle: any;
-};
-
-const SignIn: FunctionComponent<SignInProps> = ({
-  signInWithGoogle
-}) => {
+const SignIn: FunctionComponent = () => {
   const divStyle: object = {
     textAlign: 'center',
     marginTop: '33px'
@@ -24,7 +18,12 @@ const SignIn: FunctionComponent<SignInProps> = ({
         </Typography>
       </div>
       <div style={divStyle}>
-        <Button onClick={signInWithGoogle}>
+        <Button
+          onClick={() => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithPopup(provider);
+          }}
+        >
           Sign in with Google
         </Button>
       </div>

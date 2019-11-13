@@ -1,26 +1,26 @@
 import React from 'react';
 import './App.css';
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
-import withFirebaseAuth from 'react-with-firebase-auth';
 import SignIn from './components/SignIn';
 import Reverse from './components/Reverse';
 import AppBar from './components/AppBar';
 import Initialize from './helpers/Initialize';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
-const App: React.FC = (props: any) => {
-  const { user, signOut, signInWithGoogle } = props;
+const App: React.FC = () => {
+  const [user] = useAuthState(firebase.auth());
 
   return (
     <>
       {user ? (
         <main>
-          <AppBar user={user} signOut={signOut} />
+          <AppBar user={user} />
           <Reverse user={user} />
         </main>
       ) : (
         <main>
-          <SignIn signInWithGoogle={signInWithGoogle} />
+          <SignIn />
         </main>
       )}
     </>
@@ -29,16 +29,4 @@ const App: React.FC = (props: any) => {
 
 Initialize.initialize();
 
-const firebaseAppAuth = firebase.auth();
-
-/**
- * providers for signing in
- */
-const providers = {
-  googleProvider: new firebase.auth.GoogleAuthProvider()
-};
-
-export default withFirebaseAuth({
-  providers,
-  firebaseAppAuth
-})(App);
+export default App;

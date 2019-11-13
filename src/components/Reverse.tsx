@@ -19,8 +19,8 @@ const Reverse: FunctionComponent<ReverseProps> = ({
           onSubmit={({ text }) => {
             firebase
               .database()
-              .ref(`users/${user.uid}/text`)
-              .push(text);
+              .ref(`users/${user.uid}/texts`)
+              .push({ content: text });
           }}
         />
       </div>

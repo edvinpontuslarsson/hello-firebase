@@ -19,7 +19,7 @@ const Reverse: FunctionComponent<ReverseProps> = ({
           onSubmit={({ text }) => {
             firebase
               .database()
-              .ref(`text/${user.displayName}`)
+              .ref(`users/${user.uid}/text`)
               .push(text);
           }}
         />

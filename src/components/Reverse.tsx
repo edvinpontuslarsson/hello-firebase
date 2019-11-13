@@ -15,18 +15,11 @@ const Reverse: FunctionComponent<ReverseProps> = ({
   const dbTextsPath = `users/${user.uid}/texts`;
   const dbRef = firebase.database().ref(dbTextsPath);
 
-  const [texts] = useListVals(dbRef);
+  interface TextObject {
+    content: string;
+  }
 
-  const isValidTextObject = (text: any): boolean => {
-    return (
-      text instanceof Object &&
-      text.hasOwnProperty('content')
-    );
-  };
-
-  const getTextContent = (text: any): string => {
-    return text.content;
-  };
+  const [texts] = useListVals<TextObject>(dbRef);
 
   return (
     <>
@@ -44,14 +37,11 @@ const Reverse: FunctionComponent<ReverseProps> = ({
         {texts &&
           texts
             .reverse()
-            .map(
-              (text, index) =>
-                isValidTextObject && (
-                  <Typography key={index}>
-                    {getTextContent(text)}
-                  </Typography>
-                )
-            )}
+            .map((text, index) => (
+              <Typography key={index}>
+                {text.content}
+              </Typography>
+            ))}
       </div>
     </>
   );

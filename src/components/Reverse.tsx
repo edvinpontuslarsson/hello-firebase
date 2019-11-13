@@ -52,16 +52,6 @@ const Reverse: FunctionComponent<ReverseProps> = ({
                   </Typography>
                 )
             )}
-        {[1, 2, 3]
-          .reverse()
-          .map(
-            (text, index) =>
-              isValidTextObject && (
-                <Typography key={index}>
-                  {getTextContent(text)}
-                </Typography>
-              )
-          )}
       </div>
     </>
   );

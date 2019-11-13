@@ -4,7 +4,7 @@ import 'firebase/auth';
 import { Button } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
-const SignIn: FunctionComponent = ({}) => {
+const SignIn: FunctionComponent = () => {
   const divStyle: object = {
     textAlign: 'center',
     marginTop: '33px'

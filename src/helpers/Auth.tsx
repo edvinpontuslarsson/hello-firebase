@@ -1,4 +1,4 @@
-import firebase from 'firebase/app';
+import firebase, { User } from 'firebase/app';
 import 'firebase/auth';
 
 const getUser = (): Promise<firebase.User | null> => {
@@ -14,11 +14,11 @@ const googleSignIn = (): Promise<firebase.User> => {
   return firebase.auth().signInWithPopup(provider);
 };
 
-const anonymousSignIn = (): Promise<any> => {
+const anonymousSignIn = (): Promise<User> => {
   return firebase.auth().signInAnonymously();
 };
 
-const signOut = (): Promise<any> => {
+const signOut = (): Promise<void> => {
   return firebase.auth().signOut();
 };
 

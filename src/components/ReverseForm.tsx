@@ -10,7 +10,7 @@ type FormProps = {
   onSubmit: (values: FieldValues) => void;
 };
 
-const AppForm: FunctionComponent<FormProps> = ({
+const ReverseForm: FunctionComponent<FormProps> = ({
   onSubmit
 }) => {
   return (
@@ -38,4 +38,4 @@ const AppForm: FunctionComponent<FormProps> = ({
   );
 };
 
-export default AppForm;
+export default ReverseForm;

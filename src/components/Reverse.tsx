@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import AppForm from './form/AppForm';
+import ReverseForm from './ReverseForm';
 import firebase from 'firebase/app';
 import 'firebase/database';
 
@@ -15,7 +15,7 @@ const Reverse: FunctionComponent<ReverseProps> = ({
       <div
         style={{ textAlign: 'center', marginTop: '33px' }}
       >
-        <AppForm
+        <ReverseForm
           onSubmit={({ text }) => {
             firebase
               .database()

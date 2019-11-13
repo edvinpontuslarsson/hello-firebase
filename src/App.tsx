@@ -4,19 +4,23 @@ import SignIn from './components/SignIn';
 import Reverse from './components/Reverse';
 import AppBar from './components/AppBar';
 import Initialize from './helpers/Initialize';
-import { getUser } from './helpers/Auth';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const App: React.FC = () => {
+  const [user] = useAuthState(firebase.auth());
+
   return (
     <>
       {user ? (
         <main>
-          <AppBar user={user} signOut={signOut} />
+          <AppBar user={user} />
           <Reverse user={user} />
         </main>
       ) : (
         <main>
-          <SignIn signInWithGoogle={signInWithGoogle} />
+          <SignIn />
         </main>
       )}
     </>

@@ -1,15 +1,14 @@
-// import * as functions from 'firebase-functions';
+import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 
 admin.initializeApp();
 
 export const onTextCreate = functions.database
   .ref('users/{userId}/texts/{textId}')
-  .onCreate((snapshot, context) => {
+  .onCreate((snapshot) => {
     const textData = snapshot.val();
-    const reversedText: string = reverseString(
-      textData.content
-    );
+    const reversedText = reverseString(textData.content);
+    return snapshot.ref.update({ content: reversedText });
   });
 
 function reverseString(str: string): string {

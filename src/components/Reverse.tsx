@@ -17,8 +17,15 @@ const Reverse: FunctionComponent<ReverseProps> = ({
 
   const [texts] = useListVals(dbRef);
 
+  const isValidTextObject = (text: any): boolean => {
+    return (
+      text instanceof Object &&
+      text.hasOwnProperty('content')
+    );
+  };
+
   const getTextContent = (text: any): string => {
-    return text['content'];
+    return text.content;
   };
 
   return (
@@ -35,9 +42,26 @@ const Reverse: FunctionComponent<ReverseProps> = ({
           Reversed text strings:
         </Typography>
         {texts &&
-          texts.map((text) => (
-            <Typography>{getTextContent(text)}</Typography>
-          ))}
+          texts
+            .reverse()
+            .map(
+              (text, index) =>
+                isValidTextObject && (
+                  <Typography key={index}>
+                    {getTextContent(text)}
+                  </Typography>
+                )
+            )}
+        {[1, 2, 3]
+          .reverse()
+          .map(
+            (text, index) =>
+              isValidTextObject && (
+                <Typography key={index}>
+                  {getTextContent(text)}
+                </Typography>
+              )
+          )}
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 
 type ReverseProps = {
-  user: any;
+  user: firebase.User;
 };
 
 const Reverse: FunctionComponent<ReverseProps> = ({

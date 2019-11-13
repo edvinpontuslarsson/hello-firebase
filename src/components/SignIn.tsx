@@ -21,7 +21,7 @@ const SignIn: FunctionComponent = () => {
         <Button
           onClick={() => {
             const provider = new firebase.auth.GoogleAuthProvider();
-            firebase.auth().signInWithPopup(provider);
+            firebase.auth().signInWithRedirect(provider);
           }}
         >
           Sign in with Google

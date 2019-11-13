@@ -17,6 +17,10 @@ const Reverse: FunctionComponent<ReverseProps> = ({
 
   const [texts] = useListVals(dbRef);
 
+  const getTextContent = (text: any): string => {
+    return text['content'];
+  };
+
   return (
     <>
       <div
@@ -31,8 +35,8 @@ const Reverse: FunctionComponent<ReverseProps> = ({
           Reversed text strings:
         </Typography>
         {texts &&
-          texts.map((txt) => (
-            <Typography>{'test'}</Typography>
+          texts.map((text) => (
+            <Typography>{getTextContent(text)}</Typography>
           ))}
       </div>
     </>

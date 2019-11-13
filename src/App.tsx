@@ -15,8 +15,8 @@ const App: React.FC = (props: any) => {
     <>
       {user ? (
         <main>
-          <AppBar signOut={signOut} />
-          <Reverse />
+          <AppBar user={user} signOut={signOut} />
+          <Reverse user={user} />
         </main>
       ) : (
         <main>

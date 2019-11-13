@@ -1,15 +1,26 @@
 import React, { FunctionComponent } from 'react';
-import AppForm from './form/AppForm';
+import ReverseForm from './ReverseForm';
+import firebase from 'firebase/app';
+import 'firebase/database';
 
-const Reverse: FunctionComponent = () => {
+type ReverseProps = {
+  user: any;
+};
+
+const Reverse: FunctionComponent<ReverseProps> = ({
+  user
+}) => {
   return (
     <>
       <div
-        style={{ textAlign: 'center', marginTop: '20px' }}
+        style={{ textAlign: 'center', marginTop: '33px' }}
       >
-        <AppForm
+        <ReverseForm
           onSubmit={({ text }) => {
-            console.log(text);
+            firebase
+              .database()
+              .ref(`users/${user.uid}/text`)
+              .push(text);
           }}
         />
       </div>

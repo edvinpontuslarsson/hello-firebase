@@ -8,11 +8,13 @@ export const onTextCreate = functions.database
   .onCreate((snapshot) => {
     const textData = snapshot.val();
     const reversedText = reverseString(textData.content);
-    return snapshot.ref.update({ content: reversedText });
+
+    return snapshot.ref.update({
+      content: reversedText,
+      isPending: false,
+    });
   });
 
 function reverseString(str: string): string {
-  return Array.from(str)
-    .reverse()
-    .join('');
+  return Array.from(str).reverse().join('');
 }

@@ -12,7 +12,7 @@ type ReverseProps = {
 };
 
 const Reverse: FunctionComponent<ReverseProps> = ({
-  user
+  user,
 }) => {
   const dbTextsPath = `users/${user.uid}/texts`;
   const dbRef = firebase.database().ref(dbTextsPath);
@@ -27,7 +27,7 @@ const Reverse: FunctionComponent<ReverseProps> = ({
     <div
       style={{
         marginTop: '33px',
-        marginLeft: '15px'
+        marginLeft: '15px',
       }}
     >
       <ReverseForm
@@ -44,7 +44,7 @@ const Reverse: FunctionComponent<ReverseProps> = ({
       </Typography>
       <List>
         {texts &&
-          texts.reverse().map((text, index) => (
+          [...texts].reverse().map((text, index) => (
             <ListItem key={index}>
               <Typography key={index}>
                 {text.content}
